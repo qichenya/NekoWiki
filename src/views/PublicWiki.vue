@@ -140,6 +140,19 @@ function goToPage(id: string) {
   font: var(--md-sys-typescale-title-large);
   color: var(--md-sys-color-on-surface);
   margin-bottom: var(--md-spacing-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-card:hover .page-card-title {
+  white-space: normal;
+  overflow: visible;
+}
+
+.page-card:hover {
+  box-shadow: var(--md-sys-elevation-2);
+  transform: translateY(-2px);
 }
 
 .page-card-time {
