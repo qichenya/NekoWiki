@@ -10,5 +10,4 @@ compatibility_date = "2025-07-31"
 #   wrangler kv:namespace create "NEKOWIKI_KV" --preview
 [[kv_namespaces]]
 binding = "NEKOWIKI_KV"
-id = "your-production-kv-id"
-preview_id = "your-preview-kv-id"
+id = "3731ac4008464db1869d2a3b0292186f"
