@@ -140,6 +140,16 @@ export function json(data: unknown, status = 200): Response {
   })
 }
 
+export function jsonWithCookie(data: unknown, token: string, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': `nekowiki_token=${token}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=604800`,
+    },
+  })
+}
+
 export function error(message: string, status = 400): Response {
   return json({ error: message }, status)
 }

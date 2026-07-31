@@ -1,5 +1,5 @@
 import type { Env, WikiUser } from '../_shared'
-import { json, error, verifyPassword, createToken } from '../_shared'
+import { error, verifyPassword, createToken, jsonWithCookie } from '../_shared'
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const { username, password } = await request.json() as { username?: string; password?: string }
@@ -14,7 +14,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       const valid = await verifyPassword(password, user.passwordHash)
       if (valid) {
         const token = await createToken(env, user.id, user.role)
-        return json({ ok: true, token, user: { id: user.id, username: user.username, role: user.role } })
+        return jsonWithCookie({ ok: true, user: { id: user.id, username: user.username, role: user.role } }, token)
       }
       break
     }

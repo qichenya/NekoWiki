@@ -1,5 +1,5 @@
 import type { Env, SiteConfig, WikiUser } from '../_shared'
-import { json, error, hashPassword, createToken } from '../_shared'
+import { error, hashPassword, createToken, jsonWithCookie } from '../_shared'
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const config = await env.NEKOWIKI_KV.get('config:site', 'json') as SiteConfig | null
@@ -35,8 +35,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   const token = await createToken(env, id, 'admin')
 
-  return json(
-    { ok: true, token, user: { id: user.id, username: user.username, role: user.role } },
+  return jsonWithCookie(
+    { ok: true, user: { id: user.id, username: user.username, role: user.role } },
+    token,
     201,
   )
 }
