@@ -1,5 +1,2 @@
-# Cloudflare Pages SPA 回退规则
 # API 路径直接放行，交给 Functions 处理
 /api/*    /api/*   200
-# 其余路径回退到 index.html（Vue SPA 客户端路由）
-/*    /index.html   200
