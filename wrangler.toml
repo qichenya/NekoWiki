@@ -5,13 +5,6 @@ pages_build_output_dir = "dist"
 name = "nekowiki"
 compatibility_date = "2025-07-31"
 
-# KV 绑定（部署后通过 Dashboard 绑定，或运行 wrangler pages deploy 时自动读取）
-# 先运行:
-#   wrangler kv:namespace create "NEKOWIKI_KV"
-#   wrangler kv:namespace create "NEKOWIKI_KV" --preview
-# 然后将输出的 id 填入下方
-
-[[kv_namespaces]]
-binding = "NEKOWIKI_KV"
-id = "your-production-kv-id"
-preview_id = "your-preview-kv-id"
+# KV 绑定请在 Cloudflare Dashboard 中配置:
+#   Pages → Settings → Functions → KV namespace bindings
+#   添加绑定: 变量名 NEKOWIKI_KV, 选择对应的 KV namespace
