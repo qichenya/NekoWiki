@@ -1,11 +1,11 @@
 import type { Env } from '../_shared'
-import { json } from '../_shared'
 
 export const onRequestPost: PagesFunction<Env> = async () => {
-  const headers = new Headers()
-  headers.append(
-    'Set-Cookie',
-    'nekowiki_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax',
-  )
-  return json({ ok: true }, 200)
+  return new Response(JSON.stringify({ ok: true }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'nekowiki_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax',
+    },
+  })
 }
