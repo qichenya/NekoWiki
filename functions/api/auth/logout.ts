@@ -5,7 +5,7 @@ export const onRequestPost: PagesFunction<Env> = async () => {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      'Set-Cookie': 'nekowiki_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax',
+      'Set-Cookie': 'nekowiki_token=; HttpOnly; Secure; Path=/; Max-Age=0; SameSite=Lax',
     },
   })
 }
