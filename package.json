@@ -1,0 +1,27 @@
+{
+  "name": "nekowiki",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "cf:build": "vite build",
+    "cf:deploy": "vite build && wrangler pages deploy dist"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  },
+  "dependencies": {
+    "@types/marked": "^5.0.2",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "gsap": "^3.15.0",
+    "marked": "^18.0.7",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0",
+    "vue-tsc": "^3.3.8"
+  }
+}

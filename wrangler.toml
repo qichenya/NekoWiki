@@ -1,0 +1,17 @@
+name = "nekowiki"
+compatibility_date = "2025-07-31"
+
+# Cloudflare Pages - Functions + KV
+# 部署步骤：
+# 1. wrangler kv:namespace create "NEKOWIKI_KV"
+# 2. wrangler kv:namespace create "NEKOWIKI_KV" --preview
+# 3. 将输出的 id 填入下方
+# 4. npm run cf:deploy
+
+[[kv_namespaces]]
+binding = "NEKOWIKI_KV"
+id = "your-production-kv-id"
+preview_id = "your-preview-kv-id"
+
+[env.production]
+# 生产环境通过 Cloudflare Dashboard 绑定 KV 时，id 会自动关联
