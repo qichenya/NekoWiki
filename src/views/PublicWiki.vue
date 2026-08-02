@@ -25,6 +25,24 @@ onMounted(async () => {
 function goToPage(id: string) {
   router.push(`/wiki/${id}`)
 }
+
+function onCardEnter(e: MouseEvent) {
+  const card = e.currentTarget as HTMLElement
+  const title = card.querySelector('.page-card-title') as HTMLElement
+  const startHeight = card.offsetHeight
+  title.style.whiteSpace = 'normal'
+  title.style.overflow = 'visible'
+  gsap.fromTo(card, { height: startHeight }, { height: 'auto', duration: 0.3, ease: 'power2.out', clearProps: 'height' })
+}
+
+function onCardLeave(e: MouseEvent) {
+  const card = e.currentTarget as HTMLElement
+  const title = card.querySelector('.page-card-title') as HTMLElement
+  const startHeight = card.offsetHeight
+  title.style.whiteSpace = 'nowrap'
+  title.style.overflow = 'hidden'
+  gsap.fromTo(card, { height: startHeight }, { height: 'auto', duration: 0.3, ease: 'power2.out', clearProps: 'height' })
+}
 </script>
 
 <template>
@@ -50,6 +68,8 @@ function goToPage(id: string) {
           :key="page.id"
           class="page-card md3-card"
           @click="goToPage(page.id)"
+          @mouseenter="onCardEnter"
+          @mouseleave="onCardLeave"
         >
           <h2 class="page-card-title">{{ page.title }}</h2>
           <time class="page-card-time">
@@ -143,16 +163,6 @@ function goToPage(id: string) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.page-card:hover .page-card-title {
-  white-space: normal;
-  overflow: visible;
-}
-
-.page-card:hover {
-  box-shadow: var(--md-sys-elevation-2);
-  transform: translateY(-2px);
 }
 
 .page-card-time {
